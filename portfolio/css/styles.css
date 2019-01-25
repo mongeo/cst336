@@ -30,12 +30,23 @@ nav a:hover {                    /*pseudo class*/
     background-color: #351a00;
 }
 
+#content {
+    text-align: center;
+}
+
 .table-row {
     background-color: #753900;
 }
 
 .hobby {
     color: yellow;
+}
+
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 4em;
+    margin-bottom: 0px;
 }
 
 footer {
