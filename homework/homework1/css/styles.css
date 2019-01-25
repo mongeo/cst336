@@ -1,0 +1,23 @@
+body {
+text-align: center;
+}
+
+header, main, nav, footer {
+    text-align: center;
+}
+
+nav a {                     
+   text-align: center; 
+}
+
+nav a:hover {   
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
