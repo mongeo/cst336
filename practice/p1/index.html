@@ -3,39 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Seasons</title>
   <style>
+    h1 {
+      color: yellow;
+      text-align: center;
+      
+    }
+    body {
+      font-family: cursive;
+      background-color: black;
+    }
+    img {
+      border-radius: 45px;
+    }
     .cell {
       width:300px;
       height:300px;
-      border: solid 1px red;
+      border: solid 0px red;
       margin: 10px;
+      text-align: center;
+      color: white;
     }
     #row1 {
       display: flex;
       justify-content: center;
+      border-bottom: solid white;
     }
     #row2 {
       display: flex;
       justify-content: center;
     }
+    
   </style>
 </head>
 <body>
+  <h1>The Seasons</h1>
   <div id="row1">
     <div class="cell">
       <img src="img/summer.png">
+      <p>Summer</p>
     </div>
      <div class="cell">
        <img src="img/fall.png">
+       <p>Fall</p>
     </div> 
   </div>
     <div id="row2">
     <div class="cell">
       <img src="img/winter.jpeg">
+      <p>Winter</p>
     </div>
      <div class="cell">
        <img src="img/spring.png">
+       <p>Spring</p>
     </div> 
   </div>
 </body>
