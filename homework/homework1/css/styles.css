@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-color: #FFF;
+    cursor: crosshair;
 }
 
 a {
@@ -97,3 +98,4 @@ footer {
 sup {
     font-size: xx-small;
 }
+
