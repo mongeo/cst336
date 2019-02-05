@@ -21,6 +21,10 @@ nav a {
    text-align: center; 
 }
 
+h2 {
+    color: #50394c;
+}
+
 main {
     text-align: center;
     width: 100%;
