@@ -21,6 +21,10 @@ nav a {
    text-align: center; 
 }
 
+nav a:hover {                     
+    text-decoration: underline;
+}
+
 h2 {
     font-family: 'Playfair Display', serif;
     color: #50394c;
