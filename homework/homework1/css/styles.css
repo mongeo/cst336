@@ -51,8 +51,39 @@ main {
     
 }
 
+.source {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+
+}
+
+.sourceText {
+    
+    color: #555;
+    font-weight: bold;
+}
+
+.sourceLink {
+    color: #777;
+    
+}
+
+ol {
+    font-size: small;
+}
+
+li {
+    font-style: italic
+}
+
 nav a:hover {   
-    text-align: center;
+    text-decoration: overline;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 h1 {
