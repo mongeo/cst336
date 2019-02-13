@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> US Geography Quiz</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>US Geography Quiz</h1>
+    <h2>What is the capital of California?</h2>
+    <input type="text" id="q1_response">
+    <div id="q1_feedback"></div>
+    
+
+    <h2>What is the longest river?</h2>
+    <select id="q2_response">
+        <option>Select One</option>
+        <option>Mississippi</option>
+        <option>Missouri</option>
+        <option>Colorado</option>
+        <option>Delaware</option>
+    </select>
+    <div id="q2_feedback"></div>
+
+    <h2>What is the smallest US State?</h2>
+    <input type="radio" name="q3" id="maine" value="Maine">Maine</label>
+    <input type="radio" name="q3" id="rhode_island" value="Rhode Island">Rhode Island</label>
+    <input type="radio" name="q3" id="maryland" value="Maryland">Maryland</label>
+    <input type="radio" name="q3" id="delaware" value="Delaware">Delaware</label>
+    <div id="q3_feedback"></div>
+
+    <div id="totalScore"></div>
+    
+    <buttton id="submitBtn">Submit</buttton>
+    
+    <script>
+        var q1_value = 25;
+        var q2_value = 25;
+        var q3_value = 25;
+        
+        var q1_correctAnswer = "sacramento"
+        var q2_correctAnswer = "Missouri";
+        var q3_correctAnswer = "rhode_island";
+        
+        $("submitBtn").on("click", function() {
+            var q1_response = $("#q1_response").val().toLowerCase();
+            var q2_response = $("#q2_response").val();
+            var q3_response = $("input[name=q3]:checked").val();
+            
+            let total_score = 0;
+            if (q1_response == q1_correctAnswer){
+                $("#q1_feedback").html("Correct!");
+                total_score += q1_value;
+            } else {
+                $("#q1_feedback").html("Incorrect!");
+            }
+            
+            if (q2_response == q2_correctAnswer){
+                $("#q2_feedback").html("Correct!");
+                total_score += q2_value;
+            } else {
+                $("#q2_feedback").html("Incorrect!");
+            }
+            
+            if (q3_response == q3_correctAnswer){
+                $("#q3_feedback").html("Correct!");
+                total_score += q3_value;
+            } else {
+                $("#q3_feedback").html("Incorrect!");
+            }
+            
+            $("#totalScore").html("Total score is: " + total_score);
+        });
+    </script>
+    
+</body>
+
+</html>
