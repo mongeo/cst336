@@ -4,78 +4,126 @@
 <head>
     <title> US Geography Quiz</title>
 
-    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>US Geography Quiz</h1>
-    <h2>What is the capital of California?</h2>
-    <input type="text" id="q1_response">
-    <div id="q1_feedback"></div>
-    
+    <div id="container">
+        <div id="jumbotron">
+            <h1>US Geography Quiz</h1>
+            <h2>What is the capital of California?</h2>
+            <input type="text" id="q1_response">
+            <div id="q1_feedback"></div>
+        
+        
+            <h2>What is the longest river?</h2>
+            <select id="q2_response">
+                <option>Select One</option>
+                <option>Mississippi</option>
+                <option>Missouri</option>
+                <option>Colorado</option>
+                <option>Delaware</option>
+            </select>
+            <div id="q2_feedback"></div>
+        
+            <h2><span id="q3_img_feedback"></span>What is the smallest US State?</h2>
+            <input type="radio" name="q3" id="maine" value="Maine">Maine</label>
+            <input type="radio" name="q3" id="rhode_island" value="Rhode Island">Rhode Island</label>
+            <input type="radio" name="q3" id="maryland" value="Maryland">Maryland</label>
+            <input type="radio" name="q3" id="delaware" value="Delaware">Delaware</label>
+            <div id="q3_feedback"></div>
+        
+            <h2>Who was the first US President?</h2>
+            <select id="q4_response">
+                <option>Select One</option>
+                <option>Abraham Lincoln</option>
+                <option>George Washington</option>
+                <option>Benjamin Franklin</option>
+                <option>Thomas Jefferson</option>
+            </select>
+            <div id="q4_feedback"></div>
+        
+        
+            <div id="totalScore"></div>
+            <br />
+            <button id="submitBtn">Submit</button>
+            <div id="footer">
+                <hr>
+                <img src="img/csumb.png">
+                <img src="img/buddy_verified.png">
+                <br />
+                Internet Programming. 2019&copy; Geoffrey Montague<br />
+                <strong>Disclaimer</strong> The information in this webpage is fictitous. <br />
+                It is used for academic purposes only.
+            </div>
+        </div>
 
-    <h2>What is the longest river?</h2>
-    <select id="q2_response">
-        <option>Select One</option>
-        <option>Mississippi</option>
-        <option>Missouri</option>
-        <option>Colorado</option>
-        <option>Delaware</option>
-    </select>
-    <div id="q2_feedback"></div>
-
-    <h2>What is the smallest US State?</h2>
-    <input type="radio" name="q3" id="maine" value="Maine">Maine</label>
-    <input type="radio" name="q3" id="rhode_island" value="Rhode Island">Rhode Island</label>
-    <input type="radio" name="q3" id="maryland" value="Maryland">Maryland</label>
-    <input type="radio" name="q3" id="delaware" value="Delaware">Delaware</label>
-    <div id="q3_feedback"></div>
-
-    <div id="totalScore"></div>
-    
-    <buttton id="submitBtn">Submit</buttton>
-    
+    </div>
     <script>
         var q1_value = 25;
         var q2_value = 25;
         var q3_value = 25;
-        
+        var q4_value = 25;
+
         var q1_correctAnswer = "sacramento"
         var q2_correctAnswer = "Missouri";
         var q3_correctAnswer = "rhode_island";
-        
+        var q4_correctAnswer = "George Washington";
+
         $("submitBtn").on("click", function() {
+            $("#q3_image_feedback").html("<img src=\"img/checkmark.png\ class=\"inline\">");
+            
             var q1_response = $("#q1_response").val().toLowerCase();
             var q2_response = $("#q2_response").val();
             var q3_response = $("input[name=q3]:checked").val();
-            
+            var q4_response = $("#q4_response").val();
+
             let total_score = 0;
-            if (q1_response == q1_correctAnswer){
+            
+            //Q1
+            if (q1_response == q1_correctAnswer) {
                 $("#q1_feedback").html("Correct!");
                 total_score += q1_value;
-            } else {
+            }
+            else {
                 $("#q1_feedback").html("Incorrect!");
             }
             
-            if (q2_response == q2_correctAnswer){
+            //Q2
+            if (q2_response == q2_correctAnswer) {
                 $("#q2_feedback").html("Correct!");
                 total_score += q2_value;
-            } else {
+            }
+            else {
                 $("#q2_feedback").html("Incorrect!");
             }
-            
-            if (q3_response == q3_correctAnswer){
+
+            //Q3
+            if (q3_response == q3_correctAnswer) {
                 $("#q3_feedback").html("Correct!");
                 total_score += q3_value;
-            } else {
+            }
+            else {
                 $("#q3_feedback").html("Incorrect!");
             }
             
+            //Q4
+            if (q4_response == q4_correctAnswer) {
+                $("#q4_feedback").html("Correct!");
+                total_score += q3_value;
+            }
+            else {
+                $("#q4_feedback").html("Incorrect!");
+            }
+
             $("#totalScore").html("Total score is: " + total_score);
         });
     </script>
-    
+
 </body>
 
 </html>

@@ -1,4 +1,12 @@
 body {
     text-align: center;
-    background-color: cyan;
+    background-color: #FFF;
+}
+
+#container {
+    display: flex;
+}
+
+#inline {
+    display: inline;
 }
