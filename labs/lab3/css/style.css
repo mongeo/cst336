@@ -1,7 +1,8 @@
 body {
-    text-align: center;
-    background-color: cyan;
+    background-color:#999
 }
+
+
 
 .correct {
     color: green;
@@ -12,6 +13,22 @@ body {
 .incorrect {
     color: red;
     font-size: 18pt;
+}
+
+.center {
+	text-align: center;
+}
+#content {
+	width: 70%;
+	align: center;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.footer {
+	text-align: center;
+	font-size: 10pt;
+	margin: 40px;
 }
 
 #container {
