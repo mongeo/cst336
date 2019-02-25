@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+    
+}
+
+#container {
+
+}
+
+table {
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+td {
+    margin: 5px 5px;
+    border: 1px solid black;
+}
+
+th {
+    text-align: center;
+}
+
+.product {
+    text-align: right;
+}

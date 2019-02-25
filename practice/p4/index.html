@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1 class="jumbotron"> Spring Break Shopping  </h1>
+
+    <table>
+    <tr>
+        <th>Product</th>
+        <th>Unit <br> Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td class="product">Microfiber Beach Towel</td>
+        <td>$30</td>
+        <td><input type="text" size="5" id="quatity1"></td>
+        <td id ="total_row1"></td>
+    </tr>
+
+   <tr>
+        <td class="product">Sunscreen 100SPF, 120ml</td>
+        <td class="price">$10</td>
+        <td><input type="text" size="5" id="quatity2"></td>
+        <td id ="total_row2"></td>
+    </tr>    
+    
+    <tr>
+        <td class="product">Ipanema Flip-flop Sandals </td>
+        <td>$20</td>
+        <td><input type="text" size="5" id="quatity3"></td>
+        <td id ="total_row3"></td>
+    </tr>
+
+   <tr>
+        <td>Shipping</td>
+        <td></td>
+        <td></td>
+        <td id="shippingOut"></td>
+    </tr>    
+        
+    <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td id="subtotal"></td>
+    </tr>             
+        
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td id="tax"></td>
+    </tr>
+    
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="total"></td>
+    </tr>
+       
+    </table>
+    
+    <h3>Shipping & Handling</h3>
+    <select id="shipping">
+        <option value="">Select one</option>
+        <option value="10">$10</option>
+        <option value="15">$15</option>
+        <option value="20">$20</option>
+    </select>
+    <br><br>
+        
+    <span>I accept the terms of this purchase.</span>
+    <br> 
+    
+    <button id="recalulate">"CONFIRM PURCHASE"</button>
+    <br/><br/>
+    <h1 id="x"></h1>
+
+</body>
+    <script>
+       // let subtotal=0;
+        
+        $("#recalulate").on( "click", function(){
+            let p1=30;
+            let p2=10;
+            let p3=20;
+            
+            let q1 = $("#quatity1").val();
+            let q2 = $("#quatity2").val();
+            let q3 = $("#quatity3").val();
+            
+            let p1_total = p1*q1;
+            let p2_total = p2*q2;
+            let p3_total = p3*q3;
+            
+            let shipping =$("#shipping").val();
+            
+            let subtotal=parseInt(p1_total)+parseInt(p2_total)+parseInt(p3_total);
+
+
+            let tax_val=.1 * parseInt(subtotal);
+            let total=parseInt(subtotal)+parseInt(tax_val)+parseInt(shipping);
+            
+            $("#total_row1").html("$"+p1_total);
+            $("#total_row2").html("$"+p2_total);
+            $("#total_row3").html("$"+p3_total);
+            $("#shippingOut").html("$"+shipping);
+            $("#subtotal").html("$ " + subtotal);
+            $("#tax").html("$"+tax_val);
+            $("#total").html("$ " + total);
+            $("#x").html("THANK YOU COME AGAIN");
+        });
+        
+    </script>
+</html>

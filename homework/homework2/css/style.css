@@ -1,0 +1,45 @@
+body {
+    background-color:white
+    text-align: center;
+}
+
+form {
+    border: 1px;
+    border-color: white;
+}
+
+
+.correct {
+    color: green;
+    font-size: 18pt;
+    
+}
+
+.incorrect {
+    color: red;
+    font-size: 18pt;
+}
+
+.center {
+	text-align: center;
+}
+#content {
+	width: 50%;
+	align: center;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.footer {
+	text-align: center;
+	font-size: 10pt;
+	margin: 40px;
+}
+
+#container {
+    display: flex;
+}
+
+#inline {
+    display: inline;
+}
