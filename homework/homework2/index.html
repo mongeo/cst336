@@ -2,69 +2,70 @@
 <html>
 
 <head>
-    <title>jQuery</title>
+    <title>Conversions</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1 class="jumbotron">jQuery Quiz</h1>
+    <h1 class="jumbotron center">Conversions</h1>
 
     <form>
         <div id="content">
-            <div class="border border-light p-5">
+            <form class="border border-light p-5">
                 <div class="form-group">
-                    <h2><span id="markImg1"></span>Question 1</h2>
-                    <input type="text" id="q1">
+                    <h2>Temperature Conversion</h2>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="tempF">Temp in Fahrenheit</label><input type="text" id="tempF" class="tempInput">&#176;F
+                        </div>
+                        <div class="col">
+                            <label for="tempC">Temp in Celsius</label><input type="text" id="tempC" class="tempInput">&#176;C
+                        </div>
+                    </div>
                     <div id="q1_feedback"></div>
                 </div>
-
+                
                 <div class="form-group">
-                    <h2><span id="markImg2"></span>Question 2</h2>
-                    <select id="q2">
-                        <option value="">Select One</option>
-                        <option>Option</option>
-                        <option>Option</option>
-                        <option>Option</option>
-                        <option>Option</option>
-                    </select>
+                    <h2>Liquid Conversion</h2>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="liquidIn">To Convert</label><input type="text" id="liquidIn" class="liquidInput">
+                            <select id="liquidMeasures">
+                                <option>Cup</option>
+                                <option>Ounce</option>
+                                <option>Liter</option>
+                            </select>
+                            <br/>
+                            <button id="liquidButton" type="button" class="btn btn-primary">Convert</button>
+                        </div>
+                        <div class="col">
+                            <div>Converted</div>
+                            <div id="liquidOut"></div>
+                        </div>
+                    </div>
                     <div id="q2_feedback"></div>
                 </div>
                 
                 <div class="form-group">
-                    <h2><span id="markImg3"></span>Question 3</h2>
-                    <input type="radio" name="q3" id="maine" value="Maine"><label for="maine">&nbspMaine</label><br />
-                    <input type="radio" name="q3" id="ri" value="Rhode Island"><label for="ri">&nbspRhode Island</label><br />
-                    <input type="radio" name="q3" id="maryland" value="Maryland"><label for="maryland">&nbspMaryland</label><br />
-                    <input type="radio" name="q3" id="delaware" value="Delaware"><label for="delaware">&nbspDelaware</label><br />
-                    <div id="q3_feedback"></div>
-                </div>
-
-                <div class="form-group">
-                    <h2><span id="markImg4"></span>Question 4</h2>
-                    <input type="checkbox" id="Jackson"><label for="Jackson">&nbspA.Jackson<br /></label><br />
-                    <input type="checkbox" id="Franklin"><label for="Franklin">&nbspB. Franklin<br /></label><br />
-                    <input type="checkbox" id="Jefferson"><label for="Jefferson">&nbspT. Jefferson<br /></label><br />
-                    <input type="checkbox" id="Roosevelt" value="Theodore Roosevelt"><label for="Roosevelt">&nbspT. Roosevelt<br /></label><br />
-                    <div id="q4_feedback"></div>
-                </div>
-
-                <div class="form-group">
-                    <h2><span id="markImg5"></span>Question 5</h2>
-                    <div>
-                        <img src="img/seal1.png" alt="Seal 1" class="active" id="seal1">
+                    <h2>Distance Conversion</h2>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="distanceIn">To Convert</label><input type="text" id="distanceIn" class="distanceInput"><br />
+                            <input type="radio" name="distance" id="mi" value="mi"><label for="mi">&nbspMile(s)</label>
+                            <input type="radio" name="distance" id="km" value="km"><label for="km">&nbspKilometer(s)</label>
+                            <button id="distanceButton" type="button" class="btn btn-primary">Convert</button>
+                        </div>
+                        <div class="col">
+                            <div>Converted</div>
+                            <div id="distanceOut"></div>
+                        </div>
                     </div>
-                    <div id="q5_feedback"></div>
-                </div>
-
-                <h2 id="total"></h2>
-                <h2 id="congrats"></h2>
-                <button id="submitButton" class="btn btn-primary"> Submit </button>
-                <h2 id="validSubmission"></h2>
-                <h2 id="totalTimes"></h2>
-                <h3 id="prevScores"></h3>
-            </div>
+                    <div id="q3_feedback"></div>
+                </div>    
+                
+            </form>
             <div class="footer">
                 <hr \>
                 <img src="img\buddy_verified.png" /><br /><br />
@@ -74,150 +75,66 @@
 </body>
 
 <script>
-    let q1_value = 20;
-    let q2_value = 20;
-    let q3_value = 20;
-    let q4_value = 20;
-    let q5_value = 20;
-
-    let q1_answer = "sacramento";
-    let q2_answer = "Missouri";
-    let q3_answer = "Rhode Island";
-    let q5_answer = "seal2";
-
-    let q5_response = "";
-
-    let totalTimes = localStorage.getItem("totalTimesTaken");
-    let scoresArray = localStorage.getItem("scoreHistory");
-    if (scoresArray == null) {
-        scoresArray = [];
-    }
-    else {
-        scoresArray = scoresArray.split(","); //creates array from a string
-    }
-
-    $(".active").on("click", function() {
-        $(".active").css("background", "");
-        $(this).css("background", "yellow");
-        //alert($(this).attr("id"));
-        q5_response = $(this).attr("id");
+    //temps
+    $("#tempF").change(function(){
+        let f = $("#tempF").val();
+        let c = (f - 32) * (5/9);
+        $("#tempC").val(c.toFixed(3));
     });
-
-    function isFormValid() {
-        let isValid = true;
-        if ($("#q1").val() == "") {
-            isValid = false;
-            $("#validSubmission").html("Question 1 not answered");
-        }
-        return isValid;
-    }
-
-    $("#submitButton").on("click", function() {
-
-        $("#validSubmission").html("");
-
-        if (!isFormValid()) { //isFormValid == false
-            return;
-        }
-
-        let total_points = 0;
-
-        let q1_response = $("#q1").val().toLowerCase();
-        let q2_response = $("#q2").val();
-        let q3_response = $("input[name=q3]:checked").val();
-
-        //Question 1
-        if (q1_response == q1_answer) {
-            $("#q1_feedback").html("Correct!");
-            total_points += q1_value;
-            $("#markImg1").html("<img src ='img/checkmark.png' alt='checkmark'>");
-            //alert(total_points);
-            $("#q1_feedback").attr("class", "correct");
-        }
-        else {
-            $("#q1_feedback").html("Incorrect!");
-            $("#markImg1").html("<img src ='img/xmark.png' alt='xmark'>");
-            $("#q1_feedback").attr("class", "incorrect");
-        }
-
-        //Question 2
-        if (q2_response == q2_answer) {
-            $("#q2_feedback").html("Correct!");
-            total_points += q2_value;
-            $("#markImg2").html("<img src ='img/checkmark.png' alt='checkmark'>");
-            $("#q2_feedback").attr("class", "correct");
-        }
-        else {
-            $("#q2_feedback").html("Incorrect!");
-            $("#markImg2").html("<img src ='img/xmark.png' alt='xmark'>");
-            $("#q2_feedback").attr("class", "incorrect");
-        }
-
-        //Question 3
-        if (q3_response == q3_answer) {
-            $("#q3_feedback").html("Correct!");
-            total_points += q3_value;
-            $("#markImg3").html("<img src ='img/checkmark.png' alt='checkmark'>");
-            $("#q3_feedback").attr("class", "correct");
-        }
-        else {
-            $("#q3_feedback").html("Incorrect!");
-            $("#markImg3").html("<img src ='img/xmark.png' alt='xmark'>");
-            $("#q3_feedback").attr("class", "incorrect");
-        }
-
-        //Question 4
-        if ($("#Jefferson").is(":checked") && $("#Roosevelt").is(":checked") && !$("#Jackson").is(":checked") && !$("#Franklin").is(":checked")) {
-            $("#q4_feedback").html("Correct");
-            total_points += q4_value;
-            $("#markImg4").html("<img src ='img/checkmark.png' alt='checkmark'>");
-            $("#q4_feedback").attr("class", "correct");
-
-        }
-        else {
-            $("#q4_feedback").html("Incorrect");
-            $("#markImg14").html("<img src ='img/xmark.png' alt='xmark'>");
-            $("#q4_feedback").attr("class", "incorrect");
-        }
-
-        //Question 5
-        if (q5_response == q5_answer) {
-            $("#q5_feedback").html("Correct");
-            total_points += q5_value;
-            $("#markImg5").html("<img src ='img/checkmark.png' alt='checkmark'>");
-            $("#q5_feedback").attr("class", "correct");
-        }
-        else {
-            $("#q5_feedback").html("Incorrect");
-            $("#markImg5").html("<img src ='img/xmark.png' alt='xmark'>");
-            $("#q5_feedback").attr("class", "incorrect");
-        }
-
-        //If 100%
-        if (total_points == (q1_value + q2_value + q3_value + q4_value + q5_value)) {
-            $("#congrats").html("Congrats! You answered all the questions correctly!");
-            $("#congrats").attr("class", "correct");
-        }
-        else {
-            $("#congrats").html("");
-
-        }
-
-        //Totals    
-        $("#total").html("The total Score is: " + total_points);
-        totalTimes++;
-
-        localStorage.setItem("totalTimesTaken", totalTimes);
-        $("#totalTimes").html("Quiz taken: " + totalTimes + " time(s)");
-        scoresArray.push(total_points);
-        $("#prevScores").html("Score History: ");
-        scoresArray.forEach(function(score) {
-            $("#prevScores").append(score + " ");
-        });
-
-        localStorage.setItem("scoreHistory", scoresArray);
-
+    
+        $("#tempC").change(function(){
+        let c = $("#tempC").val();
+        let f = (c * (9 / 5)) + 32;
+        $("#tempF").val(f.toFixed(3));
     });
+    
+    //liquid
+    $("#liquidButton").on("click",function(){
+        let valIn = $("#liquidIn").val();
+        let measureIn = $("#liquidMeasures").val();
+        let outVal1;
+        let outMeasure1;
+        let out2Val2;
+        let outMeasure2;
+        
+        if (measureIn == "Cup") {
+            outMeasure1="Ounce(s)";
+            outVal1=valIn*8;
+            
+            outMeasure2="Liter(s)";
+            outVal2=(valIn/(4.2268)).toFixed(3);
+        } else if (measureIn == "Ounce") {
+            outMeasure1="Cup(s)";
+            outMeasure2="Liter(s)";
+        } else {//Litre
+            outMeasure1="Cup(s)";
+            outMeasure2="Ounce(s)";
+        }
+        stringRes = "";
+        stringRes += "<div>" + outVal1 + " " + outMeasure1 + "\<div>";
+        stringRes += "<div>" + outVal2 + " " + outMeasure2 + "\<div>";
+        $("#liquidOut").html(stringRes);
+    });
+    
+    //distance
+    $("#distanceButton").on("click",function(){
+        let distanceVal = $("#distanceIn").val();
+        let distanceMeasure = $("input[name=distance]:checked").val();
+        let dValOut;
+        let dMeasureOut;
+        if (distanceMeasure == "mi"){
+            dMeasureOut = "kilometer";
+            dValOut = (distanceVal * 1.609).toFixed(3);
+        } else {
+            dMeasureOut = "mile";
+            dValOut = ( distanceVal / 1.609).toFixed(3);
+        }
+        stringRes = "";
+        stringRes += "<div>" + dValOut + " " + dMeasureOut + "(s)</div>";
+        $("#distanceOut").html(stringRes);
+    });
+    
+    
 </script>
 
 </html>

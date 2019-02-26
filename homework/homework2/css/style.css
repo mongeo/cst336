@@ -1,13 +1,16 @@
 body {
-    background-color:white
+    background-color:black
     text-align: center;
 }
 
 form {
     border: 1px;
-    border-color: white;
+    border-color: black;
 }
 
+input[type=text]:focus {
+  background-color: lightblue;
+}
 
 .correct {
     color: green;
@@ -42,4 +45,13 @@ form {
 
 #inline {
     display: inline;
+}
+
+
+.tempInput {
+    width: 75%;
+}
+
+.liquidInput {
+    width: 45%;
 }
