@@ -26,7 +26,12 @@
                             <input type="text" id="tempC" class="tempInput">&#176;C
                         </div>
                     </div>
-                    <div id="q1_feedback"></div>
+                    <div id="q1_feedback" style="display:none">
+                        <br />
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Oh snap!</strong> Please enter a number.
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -99,20 +104,35 @@
                 <img src="img\csumb.png" /><br /><br /> Internet Programming. 2019&copy; Geoffrey Montague<br />
                 <strong>Disclaimer</strong> The information in this webpage is fictitous. <br /> It is used for academic purposes only.
             </div>
+
+
 </body>
 
 <script>
     //temps
     $("#tempF").change(function(){
         let f = $("#tempF").val();
-        let c = (f - 32) * (5/9);
-        $("#tempC").val(c.toFixed(3));
+        console.log(f);
+        if (!$.isNumeric(f)){
+            //alert("oops");
+            $("#q1_feedback").css("display","block");
+        } else {
+            let c = (f - 32) * (5/9);
+            $("#tempC").val(c.toFixed(3));
+            $("#q1_feedback").css("display","none");
+        }
     });
     
-        $("#tempC").change(function(){
+    $("#tempC").change(function(){
         let c = $("#tempC").val();
-        let f = (c * (9 / 5)) + 32;
-        $("#tempF").val(f.toFixed(3));
+            if (!$.isNumeric(c)){
+            $("#q1_feedback").css("display","block");
+        } else {
+            let f = (c * (9 / 5)) + 32;
+            $("#tempF").val(f.toFixed(3));
+            $("#q1_feedback").css("display","none");
+        }
+
     });
     
     //liquid
@@ -177,9 +197,6 @@
             $("#textIn").val(textIn.toLowerCase());
         }
     });
-
-    
-    
 </script>
 
 </html>
