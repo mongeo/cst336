@@ -18,10 +18,12 @@
                     <h2>Temperature Conversion</h2>
                     <div class="form-row">
                         <div class="col">
-                            <label for="tempF">Temp in Fahrenheit</label><input type="text" id="tempF" class="tempInput">&#176;F
+                            Temp in Fahrenheit: <br />
+                            <input type="text" id="tempF" class="tempInput">&#176;F
                         </div>
                         <div class="col">
-                            <label for="tempC">Temp in Celsius</label><input type="text" id="tempC" class="tempInput">&#176;C
+                            Temp in Celsius: <br />
+                            <input type="text" id="tempC" class="tempInput">&#176;C
                         </div>
                     </div>
                     <div id="q1_feedback"></div>
@@ -31,39 +33,64 @@
                     <h2>Liquid Conversion</h2>
                     <div class="form-row">
                         <div class="col">
-                            <label for="liquidIn">To Convert</label><input type="text" id="liquidIn" class="liquidInput">
+                            To Convert: <br /><input type="text" id="liquidIn" class="liquidInput">
                             <select id="liquidMeasures">
                                 <option>Cup</option>
                                 <option>Ounce</option>
                                 <option>Liter</option>
                             </select>
                             <br/>
-                            <button id="liquidButton" type="button" class="btn btn-primary">Convert</button>
                         </div>
                         <div class="col">
-                            <div>Converted</div>
+                            <div>Converted: <br /></div>
                             <div id="liquidOut"></div>
                         </div>
                     </div>
-                    <div id="q2_feedback"></div>
+                    <div class="form-row">
+                        <div class="col">
+                            <button id="liquidButton" type="button" class="btn btn-primary">Convert</button>
+                            <div id="q2_feedback"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <h2>Distance Conversion</h2>
                     <div class="form-row">
                         <div class="col">
-                            <label for="distanceIn">To Convert</label><input type="text" id="distanceIn" class="distanceInput"><br />
-                            <input type="radio" name="distance" id="mi" value="mi"><label for="mi">&nbspMile(s)</label>
+                            To Convert:<br /><input type="text" id="distanceIn" class="distanceInput"><br />
+                            <input type="radio" name="distance" id="mi" value="mi" checked><label for="mi">&nbspMile(s)</label>
                             <input type="radio" name="distance" id="km" value="km"><label for="km">&nbspKilometer(s)</label>
-                            <button id="distanceButton" type="button" class="btn btn-primary">Convert</button>
                         </div>
                         <div class="col">
-                            <div>Converted</div>
+                            <div>Converted: </div>
                             <div id="distanceOut"></div>
                         </div>
                     </div>
-                    <div id="q3_feedback"></div>
-                </div>    
+                    <div class="form-row">
+                        <div class="col">
+                            <button id="distanceButton" type="button" class="btn btn-primary">Convert</button>
+                            <div id="q3_feedback"></div>
+                        </div>
+                    </div>
+                </div>   
+                
+                <div class="form-group">
+                    <h2>Text Case Conversion</h2>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="textIn">To Convert: <br /></label><textarea id="textIn" class="textInput"></textarea><br />
+                            <input type="radio" name="textCase" id="upper" value="upper" checked><label for="upper">&nbspUpperCase</label>
+                            <input type="radio" name="textCase" id="lower" value="lower"><label for="lower">&nbspLowerCase</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <button id="textCaseButton" type="button" class="btn btn-primary">Convert</button>
+                            <div id="q3_feedback"></div>
+                        </div>
+                    </div>
+                </div>  
                 
             </form>
             <div class="footer">
@@ -99,16 +126,22 @@
         
         if (measureIn == "Cup") {
             outMeasure1="Ounce(s)";
-            outVal1=valIn*8;
+            outVal1=valIn*8.115;
             
             outMeasure2="Liter(s)";
-            outVal2=(valIn/(4.2268)).toFixed(3);
+            outVal2=(valIn/(4.167)).toFixed(3);
         } else if (measureIn == "Ounce") {
             outMeasure1="Cup(s)";
+            outVal1=(valIn/8.115).toFixed(3);
+    
             outMeasure2="Liter(s)";
+            outVal2=(valIn/33.814).toFixed(3);
         } else {//Litre
             outMeasure1="Cup(s)";
+            outVal1=(valIn*4.167).toFixed(3);
+            
             outMeasure2="Ounce(s)";
+            outVal2=(valIn*33.814).toFixed(3);
         }
         stringRes = "";
         stringRes += "<div>" + outVal1 + " " + outMeasure1 + "\<div>";
@@ -133,6 +166,18 @@
         stringRes += "<div>" + dValOut + " " + dMeasureOut + "(s)</div>";
         $("#distanceOut").html(stringRes);
     });
+    
+    //text case
+    $("#textCaseButton").on("click",function(){
+        let textIn = $("#textIn").val();
+        let textCase = $("input[name=textCase]:checked").val();
+        if (textCase == "upper"){
+            $("#textIn").val(textIn.toUpperCase());
+        } else {
+            $("#textIn").val(textIn.toLowerCase());
+        }
+    });
+
     
     
 </script>

@@ -4,11 +4,13 @@ body {
 }
 
 form {
-    border: 1px;
-    border-color: black;
+    border: 5px solid black;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-input[type=text]:focus {
+input[type=text]:focus, textarea:focus {
   background-color: lightblue;
 }
 
@@ -47,11 +49,22 @@ input[type=text]:focus {
     display: inline;
 }
 
+#textIn {
+    width: 100%;
+    height: 200px;
+}
 
 .tempInput {
-    width: 75%;
+    width: 50%;
 }
 
 .liquidInput {
-    width: 45%;
+    width: 30%;
+}
+
+#liquidMeasures {
+    display: inline;
+}
+#liquidIn {
+    display: inline;
 }
