@@ -1,9 +1,10 @@
 body {
-    background-color:black
+    background-color: #908BAA;
     text-align: center;
 }
 
 form {
+    background-color: lightgray;
     border: 5px solid black;
     width: 75%;
     margin-left: auto;
@@ -11,7 +12,12 @@ form {
 }
 
 input[type=text]:focus, textarea:focus {
-  background-color: lightblue;
+  background-color: #FAF6F4;
+}
+
+.jumbotron {
+    background-color: #281A2A;
+    color: white;
 }
 
 .correct {
