@@ -1,4 +1,12 @@
 
+body {
+    background-color: #38A1F3;
+}
+
+.container {
+    width: 75%;
+}
+
 .divider-text {
     position: relative;
     text-align: center;
@@ -29,7 +37,6 @@
     background-color: #42AEEC;
     color: #fff;
 }
-
 
 .success {
     color: green;

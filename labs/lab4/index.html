@@ -7,12 +7,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet/css" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script>
         $(document).ready(function() {
 
@@ -37,7 +34,6 @@
                 }); //ajax
             }); //state
 
-
             $("#zipCode").on("change", function() {
                 $.ajax({
                     type: "GET",
@@ -45,14 +41,29 @@
                     dataType: "json",
                     data: { "zip": $("#zipCode").val() },
                     success: function(data, status) {
-                        //alert(data.city);
-                        $("#zipError").html("");
-                        $("#city").html(data.city);
-                        $("#longitude").html(data.longitude);
-                        $("#latitude").html(data.latitude);
+                        if (data === false){
+                            $("#zipCodeMsg").html("Zip code not found");
+                            $("#zipCodeMsg").attr('class', 'fail text-center');
+                            $("#city").html("");
+                            $("#longitude").html("");
+                            $("#latitude").html("");
+                        } else {
+                            $("#zipCodeMsg").html("<br>");
+                            $("#city").html(data.city);
+                            $("#longitude").html(data.longitude);
+                            $("#latitude").html(data.latitude);
+                        }
+
+                    },
+                    error: function(status){
+                            $("#zipCodeMsg").html("Invalid input");
+                            $("#zipCodeMsg").attr('class', 'fail text-center');
+                            $("#city").html("");
+                            $("#longitude").html("");
+                            $("#latitude").html(""); 
                     },
                     complete: function(data, status) { //optional, used for debugging purposes
-                        $("#zipError").html("Zip code not found")
+                        
                     }
                 }); //ajax
             }); //zipCode
@@ -65,22 +76,50 @@
                     data: { "username": $("#username").val() },
                     success: function(data, status) {
                         //alert(data.available + " " + $("#username").val() );
-                        if (data.available == "true") {
-                            //alert(data.available);
-                            $("#usernameMsg").html("Available");
-                            $("#usernameMsg").attr('class', 'success');
+                        if ($("#username").val().length < 4){
+                            $("#usernameMsg").html("Username must be at least 4 characters long");
+                            $("#usernameMsg").attr('class', 'fail text-center');
+                        } else {
+                            if (data.available == "true") {
+                                //alert(data.available);
+                                $("#usernameMsg").html("Available");
+                                $("#usernameMsg").attr('class', 'success text-center');
+                            }
+                            else {
+                                $("#usernameMsg").html("Unavailable");
+                                $("#usernameMsg").attr('class', 'fail text-center');
+                            }
                         }
-                        else {
-                            $("#usernameMsg").html("Unavailable");
-                            $("#usernameMsg").attr('class', 'fail');
-                        }
+
                     },
                     complete: function(data, status) { //optional, used for debugging purposes
 
                     }
                 }); //ajax
+
             }); //state
 
+            $("#password").keyup(function() {
+                $("#passwordConfirm").val("");
+                $("#passwordConfirmMsg").html("");
+                if ($("#password").val().length < 6){
+                    $("#passwordMsg").html("Password must be at least 6 characters long");
+                    $("#passwordMsg").attr('class', 'fail text-center');
+                } else {
+                    $("#passwordMsg").html("Password  is valid!");
+                    $("#passwordMsg").attr('class', 'success text-center');
+                }
+            }); //password
+
+            $("#passwordConfirm").keyup(function() {
+                if ($("#passwordConfirm").val() != $("#password").val()){
+                    $("#passwordConfirmMsg").html("Passwords don't match");
+                    $("#passwordConfirmMsg").attr('class', 'fail text-center');
+                } else {
+                    $("#passwordConfirmMsg").html("Passwords match!");
+                    $("#passwordConfirmMsg").attr('class', 'success text-center');
+                }
+             }); //password confirm
 
         }); //document.ready()
     </script>
@@ -124,25 +163,65 @@
                 		    <span class="input-group-text"> <i class="fa fa-home"></i> </span>
                 		 </div>
                         <input id="zipCode" name="" class="form-control" placeholder="Zip code" type="text">
-                        &nbsp;<span id="zipError"></span><br> 
                     </div> <!-- form-group// -->
+                    
+                	<div class="text-left">
+                	    <div id="zipCodeMsg" class="fail text-center"><br></div>
+                        City:&nbsp;<span id="city"></span><br>
+                        Latitude:&nbsp;<span id="latitude"></span><br>
+                        Longitude:&nbsp;<span id="longitude"></span><br>
+                	</div>
+                    <br>
 
-                    City:
-                    <span
-                        id="city"></span>
-                        <br> Latitude: <span id="latitude"></span>
-                        <br> Longitude: <span id="longitude"></span>
-                        <br><br> State:
-                        <select id="state">
-           <option> Select One </option> 
-           <option value="ca"> California </option>
-           <option value="ny"> New York </option>
-           <option value="tx"> Texas </option>
-        </select>
-                        <br> Select a County: <select id="county"></select><br> Desired Username: <input id="username" type="text">&nbsp;<span id="usernameMsg"></span><br> Password: <input id="password" type="password"><br> Type Password Again:
-                        <input
-                            type="password"><br>
-                            <input type="submit" value="Sign up!">
+                    <div class="form-group input-group">
+				    	<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-home"></i> </span>
+						</div>
+	                    <select id="state" class="custom-select">
+				        	<option> State </option> 
+				           	<option value="ca"> California </option>
+				           	<option value="ny"> New York </option>
+				           	<option value="tx"> Texas </option>
+				        </select><br>
+					</div> <!-- form-group end.// -->
+                    
+                    <div class="form-group input-group">
+				    	<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-home"></i> </span>
+						</div>
+	                    <select id="county" class="custom-select">
+				        	<option> County </option> 
+				        </select><br>
+					</div> <!-- form-group end.// -->
+					
+				    <div class="form-group input-group">
+				    	<div class="input-group-prepend">
+						    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+						</div>
+				        <input id="username" class="form-control" placeholder="Desired Username" type="username"><br>
+				    </div> 
+				    <div id="usernameMsg"></div><!-- form-group// -->
+
+				    
+				    <div class="form-group input-group">
+				    	<div class="input-group-prepend">
+						    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+				        <input id="password" class="form-control" placeholder="Create password" type="password">
+				    </div> 
+				    <div id="passwordMsg"></div><!-- form-group// -->
+				    
+				    <div class="form-group input-group">
+				    	<div class="input-group-prepend">
+						    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+				        <input id="passwordConfirm" class="form-control" placeholder="Confirm password" type="password">
+				    </div> 
+				    <div id="passwordConfirmMsg"></div><!-- form-group// -->
+				    
+				    <div class="text-center">
+                    <input id="submitButton" type="submit" value="Sign up!" class="btn btn-primary">
+				    </div>
                 </form>
             </article>
         </div>
