@@ -34,11 +34,16 @@ input[type=text]:focus, textarea:focus {
 .center {
 	text-align: center;
 }
+
 #content {
 	width: 50%;
 	align: center;
 	text-align: center;
 	margin: 0 auto;
+}
+
+#q1_feedback {
+    display: none;
 }
 
 .footer {

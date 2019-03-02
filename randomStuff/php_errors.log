@@ -1,0 +1,8 @@
+[27-Feb-2019 00:45:29 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting variable (T_VARIABLE) or '$' in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/basic.php on line 15
+[27-Feb-2019 00:46:02 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting variable (T_VARIABLE) or '$' in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/basic.php on line 15
+[27-Feb-2019 00:46:34 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting variable (T_VARIABLE) or '$' in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/basic.php on line 15
+[27-Feb-2019 00:46:49 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting variable (T_VARIABLE) or '$' in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/basic.php on line 14
+[27-Feb-2019 01:23:18 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/checkUsername_json.php on line 5
+[27-Feb-2019 01:24:00 UTC] PHP Fatal error:  Call to undefined function json_ecode() in /home/ubuntu/workspace/cst336/randomStuff/phpbasic/checkUsername_json.php on line 11
+[27-Feb-2019 01:24:00 UTC] PHP Stack trace:
+[27-Feb-2019 01:24:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/randomStuff/phpbasic/checkUsername_json.php:0
