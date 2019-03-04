@@ -142,10 +142,11 @@
                 }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
   
                 success: function(data, status) {
-                  for (let i = 0; i < comments.length; i++) {
-                      $("#comments").append("<div>" + comments[i] + "</div>");
-                  }
-                  $("#comments").html(data.comments);
+                  $.each(data, function( key, value ) {
+                    $("#comments").append("<div>" + value.author + ": " + value.comment +"<br><br></div>");
+                    
+                  });
+                  
                 },
                 complete: function(data, status) {
                   //alert(status);
@@ -181,7 +182,7 @@
   </button>
   <span id="dislikes"></span>
   
-    <div id="comments"></div>
+    <div id="comments"><br></div>
 </body>
 <script>
 </script>
