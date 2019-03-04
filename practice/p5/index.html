@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Practice 5: Like/Dislike Video App</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script>
+    $(document).ready(function() {
+          // function clicked() {
+          //   $("#liked").css("display", "none");
+          // }
+
+          // function show() {
+          //   $("#liked").css("display", "inline");
+          // }
+
+          var likeClicked = false;
+          var dislikeClicked = false;
+           $.ajax({
+              type: "get",
+              url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+              dataType: "json",
+              data: {
+                "videoId": "hY7m5jjJ9mM",
+                
+              }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+
+              success: function(data, status) {
+                $("#likes").html(data.likes);
+                $("#dislikes").html(data.dislikes);
+              },
+              complete: function(data, status) {
+                //alert(status);
+              }
+            }); //ajax
+            
+           
+          $("#like").on("click", function() {
+            //This AJAX call returns a number of "likes" and "dislikes"
+            //Enter a YouTube video id for "data".
+            if (!likeClicked){ //if not clicked: like
+              $.ajax({
+              type: "get",
+              url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+              dataType: "json",
+              data: {
+                "videoId": "hY7m5jjJ9mM",
+                "action": "like"
+              }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+
+              success: function(data, status) {
+                $("#likes").html(data.likes);
+                $("#like_img").attr("src","img/cancel_like.png");
+                likeClicked = true;
+              },
+              complete: function(data, status) {
+                //alert(status);
+              }
+            }); //ajax
+            
+            } //if
+            else { // if clicked: cancel like
+              $.ajax({
+              type: "get",
+              url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+              dataType: "json",
+              data: {
+                "videoId": "hY7m5jjJ9mM",
+                "action": "cancel_like"
+              }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+
+              success: function(data, status) {
+                $("#likes").html(data.likes);
+                $("#like_img").attr("src","img/like.png");
+                likeClicked  = false;
+              },
+              complete: function(data, status) {
+                //alert(status);
+              }
+            }); //ajax
+            }
+          });//likes
+            
+
+
+            $("#dislike").on("click", function() {
+              //This AJAX call returns a number of "likes" and "dislikes"
+              //Enter a YouTube video id for "data".
+              if (!dislikeClicked){ //if not clicked: like
+                $.ajax({
+                  type: "get",
+                  url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+                  dataType: "json",
+                  data: {
+                    "videoId": "hY7m5jjJ9mM",
+                    "action": "dislike"
+                  }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+  
+                  success: function(data, status) {
+                    $("#dislikes").html(data.dislikes);
+                    $("#dislike_img").attr("src","img/cancel_dislike.png");
+                    dislikeClicked = true;
+                  },
+                  complete: function(data, status) {
+                    //alert(status);
+                  }
+                }); //ajax
+              } else {
+                $.ajax({
+                  type: "get",
+                  url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+                  dataType: "json",
+                  data: {
+                    "videoId": "hY7m5jjJ9mM",
+                    "action": "cancel_dislike"
+                  }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+  
+                  success: function(data, status) {
+                    $("#dislikes").html(data.dislikes);
+                    $("#dislike_img").attr("src","img/dislike.png");
+                    dislikeClicked = false;
+                  },
+                  complete: function(data, status) {
+                    //alert(status);
+                  }
+                }); //ajax
+              }
+          }); //dislikes
+          
+          
+          $("#commentBtn").on("click",function(){
+              $.ajax({
+                type: "get",
+                url: "https://cst336.herokuapp.com/projects/api/videoLikesAPI.php",
+                dataType: "json",
+                data: {
+                  "videoId": "hY7m5jjJ9mM",
+                  "action": "comments"
+                }, //   <----AS THE VALUE, ENTER THE YOUTUBE VIDEO ID
+  
+                success: function(data, status) {
+                  for (let i = 0; i < comments.length; i++) {
+                      $("#comments").append("<div>" + comments[i] + "</div>");
+                  }
+                  $("#comments").html(data.comments);
+                },
+                complete: function(data, status) {
+                  //alert(status);
+                }
+            });//ajax
+          }); //comment          
+          
+    });//onready
+  </script>
+</head>
+
+<body>
+
+  <!--Embed here any YouTube video using the "iframe" tag -->
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/hY7m5jjJ9mM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <br>
+  
+  <button id="commentBtn">Get Comments</button>
+
+
+  <span id="likes"></span>
+
+  
+  <button id="like" >
+    <img id="like_img" src="img/like.png" class="unliked" alt="Like button" width="35" />
+  </button>
+
+
+  <span id="likes"></span>
+
+  <button id="dislike" >
+    <img id="dislike_img" src="img/dislike.png" alt="Dislike button" width="35" />
+  </button>
+  <span id="dislikes"></span>
+  
+    <div id="comments"></div>
+</body>
+<script>
+</script>
+
+</html>
