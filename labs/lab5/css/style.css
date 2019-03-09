@@ -2,11 +2,16 @@ body {
     background-color: #38A1F3;
 }
 
+
 .container {
     width: 75%;
     background-color: white;
     text-align: center;
     margin: 0 auto;
+}
+
+.footer {
+    color: white;
 }
 
 .send-button {
