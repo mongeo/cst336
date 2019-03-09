@@ -1,0 +1,10 @@
+[09-Mar-2019 20:45:24 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php on line 17
+[09-Mar-2019 20:45:52 UTC] PHP Parse error:  syntax error, unexpected '{' in /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php on line 23
+[09-Mar-2019 20:55:28 UTC] PHP Warning:  strtolower() expects exactly 1 parameter, 2 given in /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php on line 23
+[09-Mar-2019 20:55:28 UTC] PHP Stack trace:
+[09-Mar-2019 20:55:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php:0
+[09-Mar-2019 20:55:28 UTC] PHP   2. strtolower() /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php:23
+[09-Mar-2019 20:55:28 UTC] PHP Warning:  in_array() expects at least 2 parameters, 1 given in /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php on line 23
+[09-Mar-2019 20:55:28 UTC] PHP Stack trace:
+[09-Mar-2019 20:55:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php:0
+[09-Mar-2019 20:55:28 UTC] PHP   2. in_array() /home/ubuntu/workspace/cst336/labs/lab5/api/checkUsername_text.php:23

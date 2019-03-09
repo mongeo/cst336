@@ -14,12 +14,17 @@ array_push($usernames, "maria", "john");
 
 //print_r($usernames)
 
+$curUsername = $_GET['username'];
 //Checking whether a username is included within the "$usernames" array
-if(in_array(strtolower($_GET['username']), $usernames)) {
-    echo "Not Available!";
+if ( strlen($curUsername) < 4 ) {
+    echo "<span class='fail'>" . "Must be at least 4 characters!"  . "</span>";
+}
+
+elseif ( in_array(strtolower($curUsername), $usernames) ) {
+    echo "<span class='fail'>" . "Not Available!"  . "</span>";
     
 }
 else{
-    echo "Available!";
+    echo "<span class='success'>" . "Available!" . "</span>";
 }
 ?>

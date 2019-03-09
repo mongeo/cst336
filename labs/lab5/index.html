@@ -2,21 +2,29 @@
 <html>
     <head>
         <title> Sign Up - PHP Web API Version </title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
         <script>
             /*global $*/
             
             $(document).ready(function() {
-                $("#username1").change(function() {
+                
+                $("#username1").keyup(function() {
+                    $("#password").val("");
+                    $("#passwordError").html("");
+                    $("#passwordSuggestion").html("");
                     $.ajax({
-
                         type: "GET",
                         url: "api/checkUsername_text.php",
                         data: { "username":$("#username1").val() },
                         success: function(data,status) {
-                        //alert(data);
                             $("#username1Error").html(data);
                         },
                         complete: function(data,status) { //optional, used for debugging purposes
@@ -26,7 +34,10 @@
                     });//ajax
                 });
                 
-                $("#username2").change(function() {
+                $("#username2").keyup(function() {
+                    $("#password").val("");
+                    $("#passwordError").html("");
+                    $("#passwordSuggestion").html("");
                     $.ajax({
 
                         type: "GET",
@@ -35,13 +46,17 @@
                         data: { "username":$("#username2").val() },
                         success: function(data,status) {
                         //alert(data);
-                            if(data.available){
-                                $("#username2Error").html("Username is available!");
-                                $("#username2Error").css("color", "green");
+                            if ($("#username2").val().length < 4) {
+                                $("#username2Error").html("Must be at least 4 characters!");
+                                $("#username2Error").attr("class", "fail");   
+                            }
+                            else if (data.available){
+                                $("#username2Error").html("Available!");
+                                $("#username2Error").attr("class", "success");
                             }
                             else {
-                                $("#username2Error").html("Username is unavailable!");
-                                $("#username2Error").css("color", "red");
+                                $("#username2Error").html("Not Available!");
+                                $("#username2Error").attr("class", "fail");
                             }
                         },
                         complete: function(data,status) { //optional, used for debugging purposes
@@ -49,30 +64,96 @@
                         }
                     
                     });//ajax  
-                });
-            });
+                });//username2 change
+                
+                
+                 $("#password").focus(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "api/strongPwdAPI.php",
+                        dataType: "json",
+                        data: {"length" : "10" },
+                        success: function(data,status) {
+                          //alert(data.suggestedPwd);
+                          $("#passwordSuggestion").html("Suggested: " + data.suggestedPwd)
+                        },
+                        complete: function(data,status) { //optional, used for debugging purposes
+                        //alert(status);
+                        }
+                    });//ajax
+                }); //passwordClick 
+                
+             $("#password").keyup(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "api/validatePwd.php",
+                        dataType: "json",
+                        data: {"username" : $("#username1").val(),
+                               "pwd" : $("#password").val()
+                        },
+                        success: function(data,status) {
+                            if ($("#password").val().length < 4) {
+                                $("#passwordError").html("Must be at least 4 characters!");
+                                $("#passwordError").attr("class", "fail");   
+                            }
+                            else if (data.validPwd === false){
+                                $("#passwordError").html("Password is invalid: Contains Username");
+                                $("#passwordError").attr("class", "fail");
+                            } else {
+                                $("#passwordError").html("Password is valid!");
+                                $("#passwordError").attr("class", "success");
+                            }
+                        },
+                        complete: function(data,status) { //optional, used for debugging purposes
+                        //alert(status);
+                        }
+                    });//ajax
+                }); //passwordClick                
+                    
+            });//documentReady
+
         </script>
     </head>
     
     <body>
-        <fieldset>
-            <legend>
-                Sign Up
-            </legend>
-            
-            First Name: <input type="text" id="firstName" name="firstName" /> <br />
-            Last Name: <input type="text" id="lastName" name="lastName" /> <br />
-            
-            Username: <input type="text" id="username1" />
-            <span id="username1Error"></span> <br />
-            
-            Username: <input type="text" id="username2" />
-            <span id="username2Error" class="error"></span> <br />
-            <br />
-            
-            Password: <input type="password" id="password"> <br />
-            
-            <button> Sign up!</button>
-        </fieldset>
+        <div id="container">
+          <div class="col-md-6 mx-auto text-center">
+             <div class="header-title">
+                <h1 class="title">
+                   Sign up!
+                </h1>
+             </div>
+          </div>
+          <div class="row">
+             <div class="col-md-4 mx-auto">
+                <div class="myform form ">
+                   <form action="" method="post" name="login">
+                      <div class="form-group">
+                         <input type="text" name="firstName"  class="form-control my-input" id="firstName" placeholder="First Name">
+                      </div>
+                      <div class="form-group">
+                         <input type="text" name="lastName"  class="form-control my-input" id="lastName" placeholder="Last Name">
+                      </div>
+                      <div class="form-group">
+                         <input type="username" name="username1"  class="form-control my-input" id="username1" placeholder="Username">
+                         <div id="username1Error" class="text-center"></div> 
+                      </div>
+                      <div class="form-group">
+                         <input type="username" name="username2"  class="form-control my-input" id="username2" placeholder="Username">
+                         <div id="username2Error" class="error"></div>
+                      </div>
+                      <div class="form-group">
+                         <div id="passwordSuggestion" class="text-center"></div> 
+                         <input type="password" min="0" name="password" id="password"  class="form-control my-input" placeholder="Password">
+                         <div id="passwordError" class="text-left"></div>
+                      </div>
+                      <div class="text-center ">
+                         <button type="submit" class=" btn btn-primary send-button">OK</button>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+        </div>
     </body>
 </html>
