@@ -21,6 +21,7 @@ $sql = "SELECT * FROM om_product WHERE 1"; //Retrieves ALL records
 
 if (!empty($product)) { //user entered a product keyword
     $sql .=  " AND productName LIKE :product";
+    $sql .=  " OR productDescription LIKE :product";
     $namedParameters[":product"] = "%$product%";
 }
 
