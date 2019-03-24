@@ -1,0 +1,22 @@
+body {
+    background-color: #55acee;
+    color: white;
+    margin: 20px 20px;
+}
+
+input {
+    border: solid 1px;
+    border-color: white;
+}
+
+hr {
+    border-color: white;
+}
+
+a, a:hover, a:visited {
+    color: darkblue;
+}
+
+.modal {
+    color: black;
+}
