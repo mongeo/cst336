@@ -10,6 +10,10 @@ body, .fluid-container {
     color: white;
 }
 
+footer {
+    text-align: center;
+}
+
 .jumbotron {
     color: white;
     background: #014421;
