@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function() {
+            //Gets Category list from database and displays them in the dropdown menu
+            $.ajax({
+                type: "GET",
+                url: "api/getRand.php",
+                dataType: "json",
+                success: function(data, status) {
+                    $.ajax({
+                        type: "GET",
+                        url: "api/getRand.php",
+                        dataType: "json",
+                        success: function(data, status) {
+        
+                        }
+                    });
+                }
+            });
+            
+            
+            $.ajax({
+                type: "GET",
+                url: "api/getRand.php",
+                dataType: "json",
+                success: function(data, status) {
+                    data.forEach(function(key) {
+                        $("#productRand").html("<a href='#' id='"+key["productId"]+"'>" + key["productName"] + "</a>");
+                    });
+                }
+            });
+            
+            $.ajax({
+                type: "GET",
+                url: "api/getProducts.php",
+                dataType: "json",
+                success: function(data, status) {
+                    data.forEach(function(key) {
+                        $("#productDropDown").append("<option value='" + key["productId"] + "'>" + key["productName"] + " " + key["productPrice"] + "</option>");
+                    });
+                }
+            });
+                
+        });
+    </script>
+</head>
+
+<body>
+    <h1> Discount Shopping  </h1>
+
+    <table>
+    <tr>
+        <th>Product</th>
+        <th>Unit <br> Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+   
+    <tr>
+        <td id="productRand"></td>
+        <td id="priceRand"></td>
+        <td id="qtyRand"><input type="text" name="qtyRand" id="qtyRand"/></td></td>
+        <td id="totalRand"></td>
+    </tr>
+        <tr>
+        <td>        
+            <select name="product" id="productDropDown">
+                <option value=""> Select one </option>
+            </select>
+        </td>
+        <td id="priceDrop"></td>
+        <td id="qtyDrop"><input type="text" name="qtyDrop" id="qtyDrop"/></td>
+        <td id="totalDrop"></td>
+    </tr>
+    
+    
+    
+    
+
+
+   <tr>
+        <td>Discount</td>
+        <td ></td>
+        <td></td>
+        <td id="discount"></td>
+    </tr>    
+        
+    <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td id="subtotal"></td>
+    </tr>             
+        
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td id="tax"></td>
+    </tr>
+    
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="total"></td>
+    </tr>
+       
+    </table>
+    <br>
+    Promo Code: <input type="text" name="code" id="code"><br>
+        
+
+</body>
+</html>

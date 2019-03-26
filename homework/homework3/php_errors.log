@@ -1,0 +1,8 @@
+[26-Mar-2019 02:22:46 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 84 bytes) in /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php on line 24
+[26-Mar-2019 02:22:46 UTC] PHP Stack trace:
+[26-Mar-2019 02:22:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php:0
+[26-Mar-2019 02:22:46 UTC] PHP   2. PDOStatement->fetchAll() /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php:24
+[26-Mar-2019 02:24:24 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 87 bytes) in /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php on line 24
+[26-Mar-2019 02:24:24 UTC] PHP Stack trace:
+[26-Mar-2019 02:24:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php:0
+[26-Mar-2019 02:24:24 UTC] PHP   2. PDOStatement->fetchAll() /home/ubuntu/workspace/cst336/homework/homework3/api/getAnimalInfo.php:24

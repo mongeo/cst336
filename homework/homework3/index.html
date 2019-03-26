@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <title>Park Animals</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script>
+            $(document).ready(function() {
+                $("#animalInput").keyup(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "api/getAnimalInfo.php",
+                        dataType: "json",
+                        data: {
+                            "animal": $("#animalInput").val(),
+                        },
+                        success: function(data, status) {
+                            let animalResults = "";
+                            animalResults += "<h3> Species Found: </h3>";
+                            animalResults += "<ol>";
+                            data.forEach(function(key) {
+                                animalResults += "<li><a href='#' class='detailLink' id='" + escape(key['commonName']) + "'>" + key['commonName']  + "</a></li>";
+                            });
+                            animalResults += "</ol>";
+                            $("#animalInfo").html(animalResults);
+                        }
+                    }); //ajax
+                }); //animalSearch
+                
+                
+                $(document).on('click', '.detailLink', function() {
+                    $("#detailModal").modal("show");
+                    $.ajax({
+                        type: "GET",
+                        url: "api/getAnimalDetail.php",
+                        dataType: "json",
+                        data: { "commonName": unescape($(this).attr("id")) },
+                        success: function(data, status) {
+                            let animalDetailStr = "";
+                            if (data.length != 0) {
+                                animalDetailStr += "<h2>Common Name: " + data[0]['commonName'] + "</h2>";
+                                animalDetailStr += "Scientific Name: " + data[0]['scientificName'] + "<br />";
+                                animalDetailStr += "Category: " + data[0]['category'] + "<br />";
+                                animalDetailStr += "Order: " + data[0]['order'] + "<br />";
+                                animalDetailStr += "Family: " + data[0]['family'] + "<br />";
+                                animalDetailStr += "<h3>Parks</h3>";
+                                animalDetailStr += "<ol>";
+                                data.forEach(function(key) {
+                                    animalDetailStr += "<li><b>" + key['parkName'] + " - " + key['state'] + "</b></li>";
+                                    animalDetailStr += "<ul>";
+                                    //occurrence
+                                    if (key['occurence'] != ""){
+                                        animalDetailStr += "<li>Occurrence: " + key['occurrence'] + "</li>";
+                                    } //else {
+                                        //animalDetailStr += "<li>Occurrence: UNKNOWN</li>";
+                                    //}
+                                    //nativeness
+                                    if (key['nativeness'] != ""){
+                                        animalDetailStr += "<li>Nativeness: " + key['nativeness'] + "</li>";
+                                    } //else {
+                                       // animalDetailStr += "<li>Nativeness: UNKNOWN</li>";
+                                    //}
+                                    //abundance
+                                    if (key['abundance'] != ""){
+                                        animalDetailStr += "<li>Abundance: " + key['abundance'] + "</li>";
+                                    } //else {
+                                        //animalDetailStr += "<li>Abundance: UNKNOWN</li>";
+                                    //}
+                                    //seasonality
+                                    if (key['seasonality'] != ""){
+                                        animalDetailStr += "<li>Seasonality: " + key['seasonality'] + "</li>";
+                                    } //else {
+                                       // animalDetailStr += "<li>Seasonality: UNKNOWN</li>";
+                                    //}
+                                    //conservationStatus
+                                    if (key['conservationStatus'] != ""){
+                                        animalDetailStr += "<li>Conservation Status: " + key['conservationStatus'] + "</li>";
+                                    } //else {
+                                        //animalDetailStr += "<li>Conservation Status: UNKNOWN</li>";
+                                    //}
+                                    
+                                    animalDetailStr += "</ul>";
+                                });
+                                animalDetailStr += "</ol>";
+                                $("#detail").html(animalDetailStr);
+                            }
+                            else {
+                                $("#detail").html("Oh snap! Error detected.");
+                            }
+                        }
+                    }); //ajax
+                }); // history
+                
+                
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class="row align-items-center h-50">
+            <div class="col-2"></div>
+            <div class="col-8" id="contentBox">
+                <div class="jumbotron">
+                    <h1>Species Info</h1>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="animalInput" class="form-control" placeholder="Search for an animal here. . . ">
+                        </div>
+                    </form>
+                    <div id="animalInfo"></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            
+            <div class="modal" tabindex="-1" role="dialog" id="detailModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> Species Detail </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="detail"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
