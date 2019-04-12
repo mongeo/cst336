@@ -8,3 +8,17 @@ Stack trace:
 #0 /home/ubuntu/workspace/cst336/labs/lab6/getProducts.php(7): PDO->__construct('mysql:host=loca...', 'root', '')
 #1 {main}
   thrown in /home/ubuntu/workspace/cst336/labs/lab6/getProducts.php on line 7
+[27-Mar-2019 00:21:02 UTC] PHP Parse error:  syntax error, unexpected '$user' (T_VARIABLE) in /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php on line 13
+[27-Mar-2019 00:28:50 UTC] PHP Fatal error:  Call to undefined function empt() in /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php on line 18
+[27-Mar-2019 00:28:50 UTC] PHP Stack trace:
+[27-Mar-2019 00:28:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php:0
+[27-Mar-2019 00:45:58 UTC] PHP Fatal error:  Function name must be a string in /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php on line 2
+[27-Mar-2019 00:45:58 UTC] PHP Stack trace:
+[27-Mar-2019 00:45:58 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php:0
+[27-Mar-2019 00:46:11 UTC] PHP Fatal error:  Function name must be a string in /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php on line 2
+[27-Mar-2019 00:46:11 UTC] PHP Stack trace:
+[27-Mar-2019 00:46:11 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php:0
+[27-Mar-2019 00:47:08 UTC] PHP Fatal error:  Function name must be a string in /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php on line 2
+[27-Mar-2019 00:47:08 UTC] PHP Stack trace:
+[27-Mar-2019 00:47:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php:0
+[03-Apr-2019 00:06:03 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/ubuntu/workspace/cst336/labs/lab7/addProducts.php on line 13
