@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Jobs</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function() {
+                $("#jobsInput").change(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "api/getJobs.php",
+                        dataType: "json",
+                        data: {
+                            "job": $("#jobsInput").val()
+                        },
+                        success: function(data, status) {
+                            alert(data);
+                            $("#jobsInfo").html("<h3> Products Found: </h3>");
+                        $.each(data, function(key) {
+                                $("#jobsInfo").append(key["suggestion"] + "<br/>");
+                            });
+                        }
+                    }); //ajax
+                }); //animalSearch
+            });
+        </script>
+    </head>
+    <body>
+        <div class="row align-items-center h-50">
+            <div class="col-2"></div>
+            <div class="col-8" id="contentBox">
+                <div class="jumbotron">
+                    <h1>Jobs Info</h1>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="jobsInput" class="form-control" placeholder="Search for jobs here. . . ">
+                        </div>
+                    </form>
+                    <div id="jobsInfo"></div>
+                </div>
+                <div class="text-center">
+                    <hr \>
+                    <img src="img\buddy_verified.png" /><br /><br />
+                    <img src="img\csumb.png" /><br /><br /> Internet Programming. 2019&copy; Geoffrey Montague<br />
+                    <strong>Disclaimer</strong> The information in this webpage is fictitous. <br /> It is used for academic purposes only.
+                </div>
+            </div>
+            <div class="col-2"></div>
+            
+            <div class="modal" tabindex="-1" role="dialog" id="detailModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> Job Detail </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="detail"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+
+    </body>
+</html>
