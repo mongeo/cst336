@@ -29,15 +29,15 @@
             
             //Update
                 $.ajax({
-                    method: "GET",
+                    method: "POST",
                     url: "api/functions.php",
                     data: { "option": $("input[name=q1]:checked").val() },
                     success: function(data, status) {
-                        alert($("input[name=q1]:checked").val() );
+                        //alert($("input[name=q1]:checked").val() );
 
                     },
                     complete: function(data, status) { //optional, used for debugging purposes
-                        alert($("input[name=q1]:checked").val() );
+                        //alert($("input[name=q1]:checked").val() );
                     }
                 }); //ajax
             

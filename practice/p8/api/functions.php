@@ -8,7 +8,7 @@
 
     $sql = "UPDATE poll_response SET :option = :option + 1";
     $arr = array();
-    $arr[":option"] = $_GET["option"];
+    $arr[':option'] = $_GET['option'];
     
     $stmt = $conn->prepare($sql);
     $stmt->execute($arr);

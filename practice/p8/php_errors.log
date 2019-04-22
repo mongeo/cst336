@@ -78,3 +78,8 @@ Stack trace:
 #0 /home/ubuntu/workspace/cst336/practice/p8/api/functions.php(14): PDOStatement->execute(Array)
 #1 {main}
   thrown in /home/ubuntu/workspace/cst336/practice/p8/api/functions.php on line 14
+[22-Apr-2019 20:14:16 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''option2' = 'option2' + 1' at line 1' in /home/ubuntu/workspace/cst336/practice/p8/api/functions.php:14
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/practice/p8/api/functions.php(14): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/practice/p8/api/functions.php on line 14
