@@ -54,7 +54,7 @@
                         jobResults += "<h3> Jobs Found: </h3>";
                         jobResults += "<ol>";
                         data.forEach(function(key) {
-                            jobResults += "<li><a href='#' class='detailLink' id='" + key['uuid'] + "'>" + key["suggestion"] + "</a></li>";
+                            jobResults += "<li><a class='detailLink' id='" + key['uuid'] + "'>" + key["suggestion"] + "</a></li>";
                         });
                         jobResults += "</ol>";
                         $("#jobsInfo").append(jobResults);
