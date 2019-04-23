@@ -1,0 +1,33 @@
+[23-Apr-2019 01:03:41 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/ubuntu/workspace/cst336/homework/homework4/api/getJobsDetail.php on line 17
+[23-Apr-2019 01:03:41 UTC] PHP Stack trace:
+[23-Apr-2019 01:03:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/homework/homework4/api/getJobsDetail.php:0
+[23-Apr-2019 03:12:33 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Testing Director' for key 'PRIMARY'' in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php on line 12
+[23-Apr-2019 03:21:24 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'jobName' cannot be null' in /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php on line 12
+[23-Apr-2019 03:21:28 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'jobName' cannot be null' in /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/savedJobs.php on line 12
+[23-Apr-2019 03:24:26 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Testing Director' for key 'PRIMARY'' in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php on line 12
+[23-Apr-2019 03:25:38 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Testing Director' for key 'PRIMARY'' in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php on line 12
+[23-Apr-2019 03:33:41 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Testing Director' for key 'PRIMARY'' in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php(12): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/homework/homework4/api/saveJob.php on line 12
