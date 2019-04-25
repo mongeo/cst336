@@ -58,7 +58,12 @@
                     "url": url
                 },
                 success: function(data, status) {
-                    
+                    data.forEach(function(admin) {
+                        $("#products").append("<div class='row'>" +
+                            "<div class='col1'>" + admin.username + "</div>" +
+                            "<div class='col2'>" + "$" + admin.password + "</div>" +
+                            "</div>");
+                    })                    
                 }
             }); //ajax 
         } //searchImage()
