@@ -1,5 +1,5 @@
 <?php
-include 'dbConnection.php';
+include '../../../inc/dbConnection.php';
 $conn = getDatabaseConnection("c9");
 
 $sql = "SELECT * FROM jobs";
