@@ -1,0 +1,46 @@
+body, .fluid-container {
+    font-family: arial;
+    height: 100%;
+    text-align: center;
+    background: #1dcaff;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed;
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color: white;
+}
+
+footer {
+    text-align: center;
+}
+    img {
+        border-radius: 20px;
+        padding:15px;
+    }
+    .favorite{
+        cursor: pointer;
+    }
+    .buttonstyle{
+        border: none;
+        color: blue;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        
+        font-family: arial;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 9px;
+    }
+
+    .letters{
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    #shrink{
+        width: 100px;
+        height: 100px;
+    }
