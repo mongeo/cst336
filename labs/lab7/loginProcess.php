@@ -3,10 +3,8 @@ session_start(); //starts or resumes an existing session
 
 //print_r($_POST); //for debugging purposes, display the content of the $_POST array
 
-include '../../inc/dbConnection.php';
-
-$conn = getDatabaseConnection("ottermart");
-
+include '../inc/dbConnection.php';
+$conn = getDatabaseConnection("finalProject");
 $username = $_POST['username'];
 $password = sha1($_POST['password']);
 
@@ -34,7 +32,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC); //we are expecting ONLY one record, so
     //echo $record['firstName'] . " " . $record['lastName'] ; //using fetch
     
     $_SESSION['adminName'] = $record['firstName'] . " " . $record['lastName'];
-    header('location: admin.php'); //redirecting to a new file
+    header('location: admin_panel.php'); //redirecting to a new file
     
     
 

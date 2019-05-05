@@ -22,3 +22,9 @@ Stack trace:
 [27-Mar-2019 00:47:08 UTC] PHP Stack trace:
 [27-Mar-2019 00:47:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab7/loginProcess.php:0
 [03-Apr-2019 00:06:03 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/ubuntu/workspace/cst336/labs/lab7/addProducts.php on line 13
+[05-May-2019 02:57:17 UTC] PHP Fatal error:  Call to undefined function dbConnection() in /home/ubuntu/workspace/cst336/labs/lab9/index.php on line 63
+[05-May-2019 02:57:17 UTC] PHP Stack trace:
+[05-May-2019 02:57:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab9/index.php:0
+[05-May-2019 03:13:23 UTC] PHP Fatal error:  Call to undefined function dbConnection() in /home/ubuntu/workspace/cst336/labs/lab9/index.php on line 63
+[05-May-2019 03:13:23 UTC] PHP Stack trace:
+[05-May-2019 03:13:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/labs/lab9/index.php:0
