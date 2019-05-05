@@ -64,7 +64,13 @@
             <h3> Images uploaded: </h3>
             <?= displayImagesUploaded() ?>
         </div>
-        
-
+    <div class="footer text-center">
+    <hr \>
+        <img src="buddy_verified.png" /><br /><br />
+        <img src="csumb.png" /><br /><br />
+        Internet Programming. 2019&copy; Geoffrey Montague<br />
+        <strong>Disclaimer</strong> The information in this webpage is fictitous. <br />
+        It is used for academic purposes only.
+    </div>
     </body>
 </html>
