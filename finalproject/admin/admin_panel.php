@@ -177,51 +177,51 @@ if (!isset($_SESSION['adminName'])) {
             </div>
 
             
-            <h1 class="text-center">Admin</h1>
+            <!--<h1 class="text-center">Admin</h1>-->
             
-            <div class="row text-center border">
-                <div class="col">
-                    <h2>Modify Admin</h2>
-                    <div id="adminView" class="text-left"></div>
-                    <br />
-                </div>
-                <div class="col">
-                    <h2>Add Admin</h2>
-                    <input type="text" id="addAdminInputUsername" name="type" placeholder="Username"><br />
-                    <input type="text" id="addAdminInputPassword" name="size" placeholder="Password"><br />
-                    <br />
-                    <button id="addAdminBtn" class="btn btn-primary text-center">Add Admin</button><br />
-                    <br />
-                    <div id="addAdminMsg"></div>
-                </div>
-            </div>
-            <div id="adminMsg" class="text-center"></div>
-            <br />
+            <!--<div class="row text-center border">-->
+            <!--    <div class="col">-->
+            <!--        <h2>Modify Admin</h2>-->
+            <!--        <div id="adminView" class="text-left"></div>-->
+            <!--        <br />-->
+            <!--    </div>-->
+            <!--    <div class="col">-->
+            <!--        <h2>Add Admin</h2>-->
+            <!--        <input type="text" id="addAdminInputUsername" name="type" placeholder="Username"><br />-->
+            <!--        <input type="text" id="addAdminInputPassword" name="size" placeholder="Password"><br />-->
+            <!--        <br />-->
+            <!--        <button id="addAdminBtn" class="btn btn-primary text-center">Add Admin</button><br />-->
+            <!--        <br />-->
+            <!--        <div id="addAdminMsg"></div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <!--<div id="adminMsg" class="text-center"></div>-->
+            <!--<br />-->
             
-            <h1 class="text-center">Users</h1>
-            <div class="row text-center border">
-                <div class="col">
-                    <h2> Modify Users </h2>
+            <!--<h1 class="text-center">Users</h1>-->
+            <!--<div class="row text-center border">-->
+            <!--    <div class="col">-->
+            <!--        <h2> Modify Users </h2>-->
                     <!-- TODO: -->
                     <!--List all Users with [Edit User][Delete User]<br />-->
-                    <div id="userView" class="text-left"></div>
-                    <br />
-                </div>
+            <!--        <div id="userView" class="text-left"></div>-->
+            <!--        <br />-->
+            <!--    </div>-->
                                 
                 <!-- TODO: -->
-                <div class="col">
-                    <h2> Add Users </h2>
-                    <input type="text" id="addUserInputUsername" name="username" placeholder="Username"><br />
-                    <input type="text" id="addUserInputPassword" name="password" placeholder="Password"><br />
-                    <input type="text" id="addUserInputEmail" name="email" placeholder="Email"><br />
-                    <input type="text" id="addUserInputAddress" name="address" placeholder="Address"><br />
-                    <br />
-                    <button id="addUserBtn" class="btn btn-primary">Add User</button><br />
-                    <br />
-                </div>
-            </div>
-            <div id="userMsg" class="text-center"></div>
-            <br />
+            <!--    <div class="col">-->
+            <!--        <h2> Add Users </h2>-->
+            <!--        <input type="text" id="addUserInputUsername" name="username" placeholder="Username"><br />-->
+            <!--        <input type="text" id="addUserInputPassword" name="password" placeholder="Password"><br />-->
+            <!--        <input type="text" id="addUserInputEmail" name="email" placeholder="Email"><br />-->
+            <!--        <input type="text" id="addUserInputAddress" name="address" placeholder="Address"><br />-->
+            <!--        <br />-->
+            <!--        <button id="addUserBtn" class="btn btn-primary">Add User</button><br />-->
+            <!--        <br />-->
+            <!--    </div>-->
+            <!--</div>-->
+            <!--<div id="userMsg" class="text-center"></div>-->
+            <!--<br />-->
             
             <h1 class="text-center">Items</h1>
             <div class="row text-center border">
@@ -254,17 +254,17 @@ if (!isset($_SESSION['adminName'])) {
             <div id="itemsMsg" class="text-center"></div>
             <br />
             
-            <h1 class="text-center">Orders</h1>
-            <div class="row text-center border">
-                <div class="col">            
-                    <h2> Modify Orders </h2>
-                    List all Orders with [Edit Orders][Delete Orders]<br />
-                    <br />
-                </div>
-            <!-- TODO: -->
-            </div>
-            <div id="ordersMsg" class="text-center"></div>
-            <br />
+            <!--<h1 class="text-center">Orders</h1>-->
+            <!--<div class="row text-center border">-->
+            <!--    <div class="col">            -->
+            <!--        <h2> Modify Orders </h2>-->
+            <!--        List all Orders with [Edit Orders][Delete Orders]<br />-->
+            <!--        <br />-->
+            <!--    </div>-->
+     
+            <!--</div>-->
+            <!--<div id="ordersMsg" class="text-center"></div>-->
+            <!--<br />-->
             
             <h1 class="text-center">Reports</h1>
             <div class="row text-center border">
