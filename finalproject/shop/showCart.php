@@ -3,7 +3,7 @@ session_start();
 $product_ids = array();
 
  //include '../inc/dbConnection.php';
- $conn = mysqli_connect('localhost','root','','finalProject');
+ $conn = mysqli_connect('us-cdbr-iron-east-02.cleardb.net','b8a7dd93c02b19','a823960ec0a9154','heroku_d5666e1dddcbffa');
  //hardcoded 
  
 if(filter_input(INPUT_POST,'add_to_cart'))
